@@ -30,20 +30,46 @@ The Token refresh is automatized after a successful login, and the refresh token
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+First initialize the client with default parameters:
+
+```dart
+final ShadowSSOClient _client = ShadowSSOClient();
+```
+
+Then you can use the client in your app with the default configuration!
+See the API documentation for more information!
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
 ```dart
-const like = 'sample';
+// More examples will coming soon
+    final ShadowSSOClient _client = ShadowSSOClient();
+
+    _client
+        .login(emailController.text, passwordController.text)
+        .then((value) => {
+            setState(() {
+            showSnackBar(
+                const SnackBar(
+                content: Text('Login successful'),
+                ),
+            );
+
+            _isLoading = false;
+            })
+        })
+        .catchError((error, stackTrace) {
+          // Handle the error here
+          showSnackBar(const SnackBar(content: Text("Login failed")));
+          setState(() {
+            _isLoading = false;
+          });
+          // print("${error}, ${stackTrace}");
+          return <void>{};
+        });
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+Additional information can be found in the GitHub repository, and the API
+documentation site at https://pilab.hu

@@ -1,9 +1,8 @@
-import 'dart:io';
-
 import 'package:grpc/grpc.dart';
 import 'package:logger/logger.dart';
 
 import '../_generated/pilab/ssso/v1/ssso_service.pbgrpc.dart' as pb;
+import '_channel.dart' if (dart.library.html) '_channel_html.dart';
 
 /// A client for the Shadow Single Sign-On service.
 class ShadowSSOClient {
@@ -15,32 +14,35 @@ class ShadowSSOClient {
   final Level logLevel;
   final String host;
   final int port;
+  final bool secure;
 
   ShadowSSOClient({
     this.host = 'localhost',
     this.port = 5000,
+    this.secure = false,
     this.logLevel = Level.debug,
   }) {
     _log = Logger(
         printer: LogfmtPrinter(),
-        output: MultiOutput([
-          ConsoleOutput(),
-          FileOutput(
-            file: File('shadow_sso_client.log'),
-            overrideExisting: true,
-          ),
-        ]),
+        // output: MultiOutput([
+        //   ConsoleOutput(),
+        //   FileOutput(
+        //     file: File('shadow_sso_client.log'),
+        //     overrideExisting: true,
+        //   ),
+        // ]),
         level: logLevel);
 
-    _channel = ClientChannel(
-      host,
-      port: port,
-      options: const ChannelOptions(
-        credentials: ChannelCredentials.insecure(),
-        connectTimeout: Duration(seconds: 5),
-        // userAgent: 'ShadowSSO Client Flutter',
-      ),
-    );
+    _channel = createChannel(host, port, secure);
+    // ClientChannel(
+    //   host,
+    //   port: port,
+    //   options: const ChannelOptions(
+    //     credentials: ChannelCredentials.insecure(),
+    //     connectTimeout: Duration(seconds: 5),
+    //     // userAgent: 'ShadowSSO Client Flutter',
+    //   ),
+    // );
 
     _grpcClient = pb.AuthServiceClient(
       _channel,

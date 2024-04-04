@@ -2,7 +2,7 @@ name: shadow_sso_client
 description: "Shadow SSO client for Flutter"
 version: 0.0.1
 homepage: https://pilab.hu/projects/shadow-sso
-repository: https://gitlab.com/pilab-dev/shadow-sso-client
+repository: https://github.com/pilab-cloud/shadow_sso_client.git
 
 environment:
   sdk: '>=3.3.2 <4.0.0'
@@ -13,7 +13,9 @@ dependencies:
     sdk: flutter
   grpc: ^3.2.4
   logger: ^2.2.0
+  protobuf: ^3.1.0
   test: ^1.24.9
+  web_socket_channel: ^2.4.4
 
 dev_dependencies:
   flutter_test:
