@@ -24,7 +24,9 @@ and open a [pull request](https://github.com/pilab-cloud/shadow_sso_client/pulls
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+The Shadow SSO Client capable of logging in with the Shadow SSO. The client library is using *HTTP2* as the primary communication channel then falls back to *HTTP1.1 + WebSocket* when you will use it in the browser.
+
+The Token refresh is automatized after a successful login, and the refresh token is beeing stored with *shared_preferences* to use it later.
 
 ## Getting started
 
