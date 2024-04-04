@@ -3,8 +3,9 @@ import 'dart:io';
 import 'package:grpc/grpc.dart';
 import 'package:logger/logger.dart';
 
-import '../_generated/ssso/v1/ssso_service.pbgrpc.dart' as pb;
+import '../_generated/pilab/ssso/v1/ssso_service.pbgrpc.dart' as pb;
 
+/// A client for the Shadow Single Sign-On service.
 class ShadowSSOClient {
   late ClientChannel _channel;
   late final pb.AuthServiceClient _grpcClient;
