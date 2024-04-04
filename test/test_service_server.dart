@@ -1,8 +1,6 @@
 import 'package:grpc/src/server/call.dart';
-
-import 'package:shadow_sso_client/src/_generated/ssso/v1/ssso_service.pb.dart';
-
-import '../lib/src/_generated/ssso/v1/ssso_service.pbgrpc.dart'
+import 'package:shadow_sso_client/src/_generated/pilab/ssso/v1/ssso_service.pb.dart';
+import 'package:shadow_sso_client/src/_generated/pilab/ssso/v1/ssso_service.pbgrpc.dart'
     show AuthServiceBase;
 
 class TestServiceServer extends AuthServiceBase {
